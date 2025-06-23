@@ -160,6 +160,20 @@
         }
       }
       
+      /* Enhance tab navigation in desktop */
+      @media screen and (min-width: 768px) {
+        .tabs-menu {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin-bottom: 30px;
+        }
+        
+        .tabs-menu::before, .tabs-menu::after {
+          display: none; /* Remove default Webflow tab line styling */
+        }
+      }
+      
       /* Enhance tab section styling */
       .section-title-block {
         text-align: center;
@@ -168,10 +182,19 @@
       .section-title-block .h2 {
         margin-bottom: 15px;
       }
-      .course-tab-link {
-        border-radius: 8px;
-        transition: all 0.3s ease;
+      /* Desktop oval tab styling */
+      @media screen and (min-width: 768px) {
+        .course-tab-link {
+          border-radius: 50px;
+          transition: all 0.3s ease;
+          padding: 10px 24px;
+          margin: 0 5px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
+      
       .course-tab-link:hover, 
       .course-tab-link.w--current {
         background-color: #FF5722;
@@ -185,8 +208,307 @@
         .colored-text {
           display: inline-block;
         }
+        
+        /* Mobile dropdown styles */
+        .tabs-menu {
+          position: relative;
+          display: block;
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto 20px;
+        }
+        
+        .mobile-dropdown-toggle {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          padding: 12px 15px;
+          background-color: #FF5722;
+          color: white;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+        }
+        
+        .mobile-dropdown-toggle:after {
+          content: "▼";
+          font-size: 12px;
+          transition: transform 0.3s ease;
+        }
+        
+        .mobile-dropdown-toggle.active:after {
+          transform: rotate(180deg);
+        }
+        
+        .tabs-menu-inner {
+          display: none;
+          position: absolute;
+          width: 100%;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+          z-index: 100;
+          margin-top: 5px;
+          overflow: hidden;
+        }
+        
+        .tabs-menu-inner.show {
+          display: block;
+        }
+        
+        .course-tab-link {
+          display: block;
+          width: 100%;
+          text-align: left;
+          padding: 12px 15px;
+          margin: 0;
+          border-radius: 0;
+          border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .course-tab-link:last-child {
+          border-bottom: none;
+        }
       }
       </style>
+      
+      <!-- Mobile dropdown functionality implemented below -->
+      
+      <style>
+        /* Fix dropdown styling issues */
+        @media screen and (max-width: 767px) {
+          .mobile-dropdown-toggle {
+            position: relative;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 12px 24px;
+            background-color: #FF5722;
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          }
+          
+          .mobile-dropdown-toggle:after {
+            content: "▼";
+            font-size: 12px;
+            transition: transform 0.3s ease;
+            margin-left: 8px;
+          }
+          
+          .mobile-dropdown-toggle.active:after {
+            transform: rotate(180deg);
+          }
+          
+          .tabs-menu-inner {
+            display: none;
+            position: absolute;
+            width: 100%;
+            max-width: 300px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 10000;
+            overflow: hidden;
+            padding: 10px;
+          }
+          
+          .tabs-menu-inner.show {
+            display: block;
+          }
+          
+          .dropdown-tab-item {
+            display: block !important;
+            width: 100%;
+            text-align: left;
+            padding: 12px 24px;
+            margin: 5px 0;
+            border-radius: 50px;
+            cursor: pointer;
+            background-color: white;
+            position: relative;
+            z-index: 10001;
+            transition: all 0.3s ease;
+          }
+          
+          .dropdown-tab-item:hover {
+            background-color: #f8f8f8;
+          }
+          
+          .dropdown-tab-item:last-child {
+            border-bottom: none;
+          }
+          
+          .dropdown-tab-item:hover {
+            background-color: #f8f8f8;
+          }
+          
+          .tabs-menu {
+            position: relative;
+            display: block !important;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px;
+            z-index: 1000;
+          }
+          
+          /* Ensure dropdown appears above all other content */
+          .w-tab-content {
+            position: relative;
+            z-index: 10;
+          }
+          
+          /* Fix stacking context */
+          .courses-content-block {
+            position: relative;
+          }
+          
+          /* Add space below dropdown to prevent overlap */
+          .courses-tab-pane {
+            margin-top: 15px;
+          }
+          
+          /* Create overlay when dropdown is active */
+          .dropdown-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 9000;
+          }
+          
+          /* Fix for dropdown positioning */
+          .tabs-menu {
+            z-index: 10000 !important;
+          }
+          
+          .dropdown-overlay.show {
+            display: block;
+          }
+        }
+      </style>
+      
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          if (window.innerWidth <= 767) {
+            // Get the tab menu
+            const tabsMenu = document.querySelector('.tabs-menu');
+            if (!tabsMenu) return;
+            
+            // Create dropdown toggle
+            const currentTab = tabsMenu.querySelector('.w--current') || tabsMenu.querySelector('.course-tab-link');
+            const dropdownToggle = document.createElement('div');
+            dropdownToggle.className = 'mobile-dropdown-toggle';
+            dropdownToggle.innerHTML = currentTab.querySelector('div').textContent;
+            
+            // Create inner container for tabs
+            const tabsMenuInner = document.createElement('div');
+            tabsMenuInner.className = 'tabs-menu-inner';
+            
+            // Move dropdown menu to body to avoid stacking context issues
+            document.body.appendChild(tabsMenuInner);
+            
+            // Create overlay for dropdown
+            const overlay = document.createElement('div');
+            overlay.className = 'dropdown-overlay';
+            document.body.appendChild(overlay);
+            
+            // Store original tabs before manipulation
+            const originalTabs = Array.from(tabsMenu.querySelectorAll('.course-tab-link'));
+            
+            // Clone tabs for the dropdown without removing originals
+            originalTabs.forEach(tab => {
+              const clonedTab = tab.cloneNode(true);
+              // Add a special class to distinguish cloned tabs
+              clonedTab.classList.add('dropdown-tab-item');
+              tabsMenuInner.appendChild(clonedTab);
+            });
+            
+            // Hide original tabs but keep them in the DOM for tab functionality
+            originalTabs.forEach(tab => {
+              tab.style.display = 'none';
+            });
+            
+            // Add toggle to menu
+            tabsMenu.prepend(dropdownToggle);
+            
+            // Position the dropdown menu under the toggle button
+            function positionDropdown() {
+              const toggleRect = dropdownToggle.getBoundingClientRect();
+              tabsMenuInner.style.top = (toggleRect.bottom + window.scrollY + 5) + 'px';
+              tabsMenuInner.style.left = toggleRect.left + 'px';
+              tabsMenuInner.style.width = toggleRect.width + 'px';
+            }
+            
+            // Add click event to toggle
+            dropdownToggle.addEventListener('click', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              // Position the dropdown before showing it
+              positionDropdown();
+              
+              this.classList.toggle('active');
+              tabsMenuInner.classList.toggle('show');
+              overlay.classList.toggle('show');
+            });
+            
+            // Handle tab clicks
+            tabsMenuInner.querySelectorAll('.dropdown-tab-item').forEach((tab, index) => {
+              tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Update dropdown button text
+                dropdownToggle.innerHTML = this.querySelector('div').textContent;
+                
+                // Close dropdown
+                tabsMenuInner.classList.remove('show');
+                dropdownToggle.classList.remove('active');
+                overlay.classList.remove('show');
+                
+                // Trigger click on original tabs using Webflow's API
+                const originalTab = originalTabs[index];
+                if (originalTab) {
+                  originalTab.click();
+                }
+              });
+            });
+            
+            // Close dropdown when clicking on overlay
+            overlay.addEventListener('click', function() {
+              tabsMenuInner.classList.remove('show');
+              dropdownToggle.classList.remove('active');
+              overlay.classList.remove('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+              if (!tabsMenu.contains(e.target) && !tabsMenuInner.contains(e.target)) {
+                tabsMenuInner.classList.remove('show');
+                dropdownToggle.classList.remove('active');
+                overlay.classList.remove('show');
+              }
+            });
+            
+            // Reposition dropdown on resize
+            window.addEventListener('resize', function() {
+              if (tabsMenuInner.classList.contains('show')) {
+                positionDropdown();
+              }
+            });
+          }
+        });
+      </script>
   </head>
   <body>
     <div class="page-wrapper">
