@@ -77,6 +77,33 @@
             (n.className += t + "touch"));
       })(window, document);
     </script>
+    <script type="text/javascript">
+      // Fix for course links to ensure they navigate to detail pages
+      document.addEventListener('DOMContentLoaded', function() {
+        // Fix any links that might be dynamically added
+        document.body.addEventListener('click', function(e) {
+          // Check if clicked element is a course card link
+          if (e.target && e.target.closest) {
+            const cardLink = e.target.closest('.course-card-image-wrap');
+            if (cardLink) {
+              const imgElement = cardLink.querySelector('img');
+              if (imgElement) {
+                const altText = imgElement.getAttribute('alt').toLowerCase();
+                
+                // Check for specific courses and redirect
+                if (altText.includes('python')) {
+                  e.preventDefault();
+                  window.location.href = 'python-detail.html';
+                } else if (altText.includes('javascript') || altText.includes('js')) {
+                  e.preventDefault();
+                  window.location.href = 'javascript-detail.html';
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
     <link
       href="images/679081d34abb58b77559d808_logo.svg"
       rel="shortcut icon"
@@ -1120,7 +1147,7 @@
                         <!-- Start of static implementation -->
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/AlgorithmsNotesForProfessionals.pdf.pdf" download="AlgorithmsNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="algorithms-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/AlgorithmsGrow.png" alt="Algorithms" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1129,7 +1156,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/AndroidNotesForProfessionals.pdf.pdf" download="AndroidNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="android-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/AndroidGrow.png" alt="Android" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1138,7 +1165,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/Angular2NotesForProfessionals.pdf.pdf" download="Angular2NotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="angular2-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/Angular2Grow.png" alt="Angular 2" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1147,7 +1174,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/AngularJSNotesForProfessionals.pdf.pdf" download="AngularJSNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="angularjs-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/AngularJSGrow.png" alt="AngularJS" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1156,7 +1183,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/BashNotesForProfessionals.pdf.pdf" download="BashNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="bash-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/BashGrow.png" alt="Bash" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">DevOps</div></div>
                             </a>
@@ -1165,7 +1192,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CNotesForProfessionals.pdf.pdf" download="CNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="c-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CGrow.png" alt="C" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1174,7 +1201,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CPlusPlusNotesForProfessionals.pdf.pdf" download="CPlusPlusNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="cplusplus-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CPlusPlusGrow.png" alt="C++" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1183,7 +1210,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CSharpNotesForProfessionals.pdf.pdf" download="CSharpNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="csharp-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CSharpGrow.png" alt="C#" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1192,7 +1219,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CSSNotesForProfessionals.pdf.pdf" download="CSSNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="css-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CSSGrow.png" alt="CSS" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1201,7 +1228,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/DotNETFrameworkNotesForProfessionals.pdf.pdf" download="DotNETFrameworkNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="dotnetframework-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/DotNETFrameworkGrow.png" alt=".NET Framework" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1210,7 +1237,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/EntityFrameworkNotesForProfessionals.pdf.pdf" download="EntityFrameworkNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="entityframework-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/EntityFrameworkGrow.png" alt="Entity Framework" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1219,7 +1246,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/ExcelVBANotesForProfessionals.pdf.pdf" download="ExcelVBANotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="excelvba-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/ExcelVBAGrow.png" alt="Excel VBA" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Office</div></div>
                             </a>
@@ -1228,7 +1255,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/GitNotesForProfessionals.pdf.pdf" download="GitNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="git-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/GitGrow.png" alt="Git" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">DevOps</div></div>
                             </a>
@@ -1237,7 +1264,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HaskellNotesForProfessionals.pdf.pdf" download="HaskellNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="haskell-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HaskellGrow.png" alt="Haskell" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1246,7 +1273,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HibernateNotesForProfessionals.pdf.pdf" download="HibernateNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="hibernate-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HibernateGrow.png" alt="Hibernate" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1255,7 +1282,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HTML5CanvasNotesForProfessionals.pdf.pdf" download="HTML5CanvasNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="html5canvas-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HTML5CanvasGrow.png" alt="HTML5 Canvas" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1264,7 +1291,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HTML5NotesForProfessionals.pdf.pdf" download="HTML5NotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="html5-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HTML5Grow.png" alt="HTML5" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1273,7 +1300,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/iOSNotesForProfessionals.pdf.pdf" download="iOSNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="ios-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/iOSGrow.png" alt="iOS" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1282,7 +1309,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/JavaNotesForProfessionals.pdf.pdf" download="JavaNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="java-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/JavaGrow.png" alt="Java" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1300,7 +1327,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/jQueryNotesForProfessionals.pdf.pdf" download="jQueryNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="jquery-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/jQueryGrow.png" alt="jQuery" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1309,7 +1336,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/KotlinNotesForProfessionals.pdf.pdf" download="KotlinNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="kotlin-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/KotlinGrow.png" alt="Kotlin" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1318,7 +1345,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/LaTeXNotesForProfessionals.pdf.pdf" download="LaTeXNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="latex-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/LaTeXGrow.png" alt="LaTeX" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Document</div></div>
                             </a>
@@ -1327,7 +1354,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/LinuxNotesForProfessionals.pdf.pdf" download="LinuxNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="linux-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/LinuxGrow.png" alt="Linux" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">OS</div></div>
                             </a>
@@ -1336,7 +1363,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MATLABNotesForProfessionals.pdf.pdf" download="MATLABNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="matlab-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MATLABGrow.png" alt="MATLAB" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Science</div></div>
                             </a>
@@ -1345,7 +1372,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MicrosoftSQLServerNotesForProfessionals.pdf.pdf" download="MicrosoftSQLServerNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="microsoftsqlserver-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MicrosoftSQLServerGrow.png" alt="Microsoft SQL Server" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1354,7 +1381,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MongoDBNotesForProfessionals.pdf.pdf" download="MongoDBNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="mongodb-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MongoDBGrow.png" alt="MongoDB" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1363,7 +1390,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MySQLNotesForProfessionals.pdf.pdf" download="MySQLNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="mysql-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MySQLGrow.png" alt="MySQL" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1372,7 +1399,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/NodeJSNotesForProfessionals.pdf.pdf" download="NodeJSNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="nodejs-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/NodeJSGrow.png" alt="Node.js" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1381,7 +1408,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/ObjectiveCNotesForProfessionals.pdf.pdf" download="ObjectiveCNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="objectivec-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/ObjectiveCGrow.png" alt="Objective-C" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1390,7 +1417,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/OracleDatabaseNotesForProfessionals.pdf.pdf" download="OracleDatabaseNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="oracledatabase-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/OracleDatabaseGrow.png" alt="Oracle Database" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1399,7 +1426,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PerlNotesForProfessionals.pdf.pdf" download="PerlNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="perl-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PerlGrow.png" alt="Perl" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1408,7 +1435,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PHPNotesForProfessionals.pdf.pdf" download="PHPNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="php-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PHPGrow.png" alt="PHP" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1417,7 +1444,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PostgreSQLNotesForProfessionals.pdf.pdf" download="PostgreSQLNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="postgresql-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PostgreSQLGrow.png" alt="PostgreSQL" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1426,7 +1453,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PowerShellNotesForProfessionals.pdf.pdf" download="PowerShellNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="powershell-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PowerShellGrow.png" alt="PowerShell" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">DevOps</div></div>
                             </a>
@@ -1444,7 +1471,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/ReactJSNotesForProfessionals.pdf.pdf" download="ReactJSNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="reactjs-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/ReactJSGrow.png" alt="React.js" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1453,7 +1480,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/ReactNativeNotesForProfessionals.pdf.pdf" download="ReactNativeNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="reactnative-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/ReactNativeGrow.png" alt="React Native" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1462,7 +1489,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/RNotesForProfessionals.pdf.pdf" download="RNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="r-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/RGrow.png" alt="R" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Data Science</div></div>
                             </a>
@@ -1471,7 +1498,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/RubyNotesForProfessionals.pdf.pdf" download="RubyNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="ruby-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/RubyGrow.png" alt="Ruby" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1480,7 +1507,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/RubyOnRailsNotesForProfessionals.pdf.pdf" download="RubyOnRailsNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="rubyonrails-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/RubyOnRailsGrow.png" alt="Ruby on Rails" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1489,7 +1516,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/SpringFrameworkNotesForProfessionals.pdf.pdf" download="SpringFrameworkNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="springframework-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/SpringFrameworkGrow.png" alt="Spring Framework" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Java</div></div>
                             </a>
@@ -1498,7 +1525,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/SQLNotesForProfessionals.pdf.pdf" download="SQLNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="sql-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/SQLGrow.png" alt="SQL" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1507,7 +1534,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/SwiftNotesForProfessionals.pdf.pdf" download="SwiftNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="swift-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/SwiftGrow.png" alt="Swift" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1516,7 +1543,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/TypeScriptNotesForProfessionals.pdf.pdf" download="TypeScriptNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="typescript-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/TypeScriptGrow.png" alt="TypeScript" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1525,7 +1552,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/VBANotesForProfessionals.pdf.pdf" download="VBANotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="vba-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/VBAGrow.png" alt="VBA" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Office</div></div>
                             </a>
@@ -1534,7 +1561,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/VisualBasic_NETNotesForProfessionals.pdf.pdf" download="VisualBasic_NETNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="visualbasic_net-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/VisualBasic_NETGrow.png" alt="Visual Basic .NET" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1543,7 +1570,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/XamarinFormsNotesForProfessionals.pdf.pdf" download="XamarinFormsNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="xamarinforms-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/XamarinFormsGrow.png" alt="Xamarin.Forms" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Mobile</div></div>
                             </a>
@@ -1562,7 +1589,7 @@
                         <!-- Programming languages only -->
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/AlgorithmsNotesForProfessionals.pdf.pdf" download="AlgorithmsNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="algorithms-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/AlgorithmsGrow.png" alt="Algorithms" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1571,7 +1598,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CNotesForProfessionals.pdf.pdf" download="CNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="c-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CGrow.png" alt="C" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1580,7 +1607,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CPlusPlusNotesForProfessionals.pdf.pdf" download="CPlusPlusNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="cplusplus-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CPlusPlusGrow.png" alt="C++" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1589,7 +1616,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CSharpNotesForProfessionals.pdf.pdf" download="CSharpNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="csharp-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CSharpGrow.png" alt="C#" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1598,7 +1625,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/DotNETFrameworkNotesForProfessionals.pdf.pdf" download="DotNETFrameworkNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="dotnetframework-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/DotNETFrameworkGrow.png" alt=".NET Framework" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1607,7 +1634,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HaskellNotesForProfessionals.pdf.pdf" download="HaskellNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="haskell-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HaskellGrow.png" alt="Haskell" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1616,7 +1643,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/JavaNotesForProfessionals.pdf.pdf" download="JavaNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="java-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/JavaGrow.png" alt="Java" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1625,7 +1652,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PerlNotesForProfessionals.pdf.pdf" download="PerlNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="perl-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PerlGrow.png" alt="Perl" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1634,7 +1661,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PythonNotesForProfessionals.pdf.pdf" download="PythonNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="python-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PythonGrow.png" alt="Python" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1643,7 +1670,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/VisualBasic_NETNotesForProfessionals.pdf.pdf" download="VisualBasic_NETNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="visualbasic_net-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/VisualBasic_NETGrow.png" alt="Visual Basic .NET" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Programming</div></div>
                             </a>
@@ -1661,7 +1688,7 @@
                         <!-- Data Analytics courses -->
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/RNotesForProfessionals.pdf.pdf" download="RNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="r-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/RGrow.png" alt="R" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Data Science</div></div>
                             </a>
@@ -1670,7 +1697,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MATLABNotesForProfessionals.pdf.pdf" download="MATLABNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="matlab-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MATLABGrow.png" alt="MATLAB" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Data Science</div></div>
                             </a>
@@ -1679,7 +1706,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/SQLNotesForProfessionals.pdf.pdf" download="SQLNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="sql-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/SQLGrow.png" alt="SQL" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1688,7 +1715,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PostgreSQLNotesForProfessionals.pdf.pdf" download="PostgreSQLNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="postgresql-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PostgreSQLGrow.png" alt="PostgreSQL" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1697,7 +1724,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MySQLNotesForProfessionals.pdf.pdf" download="MySQLNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="mysql-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MySQLGrow.png" alt="MySQL" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1706,7 +1733,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MongoDBNotesForProfessionals.pdf.pdf" download="MongoDBNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="mongodb-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MongoDBGrow.png" alt="MongoDB" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1715,7 +1742,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/MicrosoftSQLServerNotesForProfessionals.pdf.pdf" download="MicrosoftSQLServerNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="microsoftsqlserver-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/MicrosoftSQLServerGrow.png" alt="Microsoft SQL Server" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1724,7 +1751,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/OracleDatabaseNotesForProfessionals.pdf.pdf" download="OracleDatabaseNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="oracledatabase-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/OracleDatabaseGrow.png" alt="Oracle Database" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1733,7 +1760,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HibernateNotesForProfessionals.pdf.pdf" download="HibernateNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="hibernate-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HibernateGrow.png" alt="Hibernate" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1742,7 +1769,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/EntityFrameworkNotesForProfessionals.pdf.pdf" download="EntityFrameworkNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="entityframework-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/EntityFrameworkGrow.png" alt="Entity Framework" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Database</div></div>
                             </a>
@@ -1760,7 +1787,7 @@
                         <!-- Product Design courses -->
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/CSSNotesForProfessionals.pdf.pdf" download="CSSNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="css-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/CSSGrow.png" alt="CSS" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1769,7 +1796,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HTML5NotesForProfessionals.pdf.pdf" download="HTML5NotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="html5-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HTML5Grow.png" alt="HTML5" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1778,7 +1805,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/HTML5CanvasNotesForProfessionals.pdf.pdf" download="HTML5CanvasNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="html5canvas-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/HTML5CanvasGrow.png" alt="HTML5 Canvas" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Web</div></div>
                             </a>
@@ -1796,7 +1823,7 @@
                         <!-- Marketing courses -->
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/LaTeXNotesForProfessionals.pdf.pdf" download="LaTeXNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="latex-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/LaTeXGrow.png" alt="LaTeX" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Document</div></div>
                             </a>
@@ -1805,7 +1832,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/ExcelVBANotesForProfessionals.pdf.pdf" download="ExcelVBANotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="excelvba-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/ExcelVBAGrow.png" alt="Excel VBA" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Office</div></div>
                             </a>
@@ -1814,7 +1841,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/VBANotesForProfessionals.pdf.pdf" download="VBANotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="vba-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/VBAGrow.png" alt="VBA" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Office</div></div>
                             </a>
@@ -1832,7 +1859,7 @@
                         <!-- Machine Learning courses -->
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PythonNotesForProfessionals.pdf.pdf" download="PythonNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="python-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PythonGrow.png" alt="Python" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Machine Learning</div></div>
                             </a>
@@ -1841,7 +1868,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/RNotesForProfessionals.pdf.pdf" download="RNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="r-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/RGrow.png" alt="R" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Machine Learning</div></div>
                             </a>
@@ -1850,7 +1877,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/PythonNotesForProfessionals.pdf.pdf" download="PythonNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="python-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/PythonGrow.png" alt="TensorFlow" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Machine Learning</div></div>
                             </a>
@@ -1859,7 +1886,7 @@
                         
                         <div role="listitem" class="w-dyn-item">
                           <div class="courses-card">
-                            <a href="pdf/JavaScriptNotesForProfessionals.pdf.pdf" download="JavaScriptNotesForProfessionals.pdf" class="course-card-image-wrap w-inline-block">
+                            <a href="javascript-detail.html" class="course-card-image-wrap w-inline-block">
                               <img loading="lazy" src="pdf-images/JavaScriptGrow.png" alt="JavaScript for ML" class="course-thumbnail" style="object-fit: cover; width: 100%; height: 100%;" />
                               <div class="card-badge"><div class="text-xs">Machine Learning</div></div>
                             </a>

@@ -18,11 +18,21 @@ This project is an exported **Webflow** landing page that has been customized to
 - Mobile-responsive design
 - Category-based filtering system
 - PDF downloads for each programming language
+- **NEW**: Detailed course pages with PDF preview functionality
 
 ## 🗂️ Project Structure
 
 ```
 ├─ index.html               # Main page (customized with static cards)
+├─ python-detail.html       # Python course detail page with PDF preview
+├─ javascript-detail.html   # JavaScript course detail page with PDF preview
+├─ detail-template.html     # Template for creating new detail pages
+├─ how-to-create-detail-pages.html # Guide for creating detail pages
+├─ troubleshooting.html     # Troubleshooting guide for link redirections
+├─ create-detail-pages.bat  # Batch script to create detail pages for all courses
+├─ create-detail-pages.html # Detailed guide for creating detail pages
+├─ update-index-links.js    # Node.js script to update index.html links
+├─ update-index-links.html  # Guide for updating index.html links
 ├─ css/                     # Stylesheets
 ├─ js/                      # JavaScript files
 ├─ pdf/                     # PDF files for downloading
@@ -44,6 +54,8 @@ This project is an exported **Webflow** landing page that has been customized to
 - **Visual Effects**: Smooth hover animations with scale and shadow effects
 - **PDF Downloads**: Each card links to a downloadable PDF resource
 - **SEO Optimized**: Custom meta tags for better search engine visibility
+- **NEW - Detail Pages**: Course detail pages with PDF preview functionality
+- **NEW - PDF Preview**: Embedded PDF viewer for previewing content before downloading
 
 ## 🛠️ Technical Implementation
 
@@ -69,6 +81,16 @@ This project is an exported **Webflow** landing page that has been customized to
 }
 ```
 
+### PDF Preview Implementation
+
+The detail pages include an embedded PDF viewer using iframe:
+
+```html
+<div class="pdf-preview-container">
+  <iframe src="pdf/PythonNotesForProfessionals.pdf.pdf" width="100%" height="600px"></iframe>
+</div>
+```
+
 ## 📄 PDF Files Structure
 
 The project includes a collection of programming language PDF guides that can be downloaded directly from the website. Each PDF follows a specific naming convention:
@@ -77,6 +99,33 @@ The project includes a collection of programming language PDF guides that can be
 - Example: `PythonNotesForProfessionals.pdf.pdf`
 
 **Note**: These PDFs must be placed in the `/pdf` directory for the download functionality to work correctly.
+
+## 🔄 Detail Pages
+
+The project now includes detailed course pages with PDF preview functionality:
+
+- **Python Detail Page**: Preview and download Python PDF notes
+- **JavaScript Detail Page**: Preview and download JavaScript PDF notes
+- **Detail Template**: Use this template to create additional detail pages
+- **How-to Guide**: Step-by-step instructions for creating new detail pages
+- **Troubleshooting**: Solutions for common issues with detail page redirections
+
+### Creating Detail Pages for All Courses
+
+To create detail pages for all courses, you can use the provided tools:
+
+1. **Batch Script Method**:
+   - Run `create-detail-pages.bat` to create basic detail page copies
+   - Edit each generated file to replace Python-specific content
+
+2. **Manual Method**:
+   - Follow the instructions in `create-detail-pages.html`
+   - Copy `python-detail.html` as a template for each course
+   - Update course name, description, category, and PDF paths
+
+3. **Updating Index Links**:
+   - Use `update-index-links.js` Node.js script to automatically update all links
+   - Or follow the manual instructions in `update-index-links.html`
 
 ## 🚀 Running Locally
 
@@ -99,12 +148,25 @@ The project includes a collection of programming language PDF guides that can be
    npx http-server -p 8000
    ```
 
+4. **Important**: For PDF preview to work correctly, you must use a local server rather than opening HTML files directly.
+
 ## 🎨 Customization Options
 
 - **Replace Images**: Add new images to `pdf-images/` directory
 - **Modify Categories**: Edit the tab sections in `index.html`
 - **Change Styling**: Update the inline `<style>` blocks or CSS files
 - **Update PDFs**: Replace PDF files in the `pdf/` directory (maintain the naming convention)
+- **Add Detail Pages**: Use the template to create more detailed course pages
+
+## 🔧 Troubleshooting
+
+If you encounter issues with links not redirecting to detail pages:
+
+1. Clear your browser cache
+2. Perform a hard refresh (Ctrl+F5 or Cmd+Shift+R)
+3. Check the HTML links in index.html
+4. Verify the JavaScript redirection code is present
+5. See `troubleshooting.html` for detailed solutions
 
 ## 📄 License
 
