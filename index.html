@@ -120,7 +120,73 @@
       .hero-rating-block, .hero-rating-text {
         display: none !important;
       }
-    </style>
+      /* Responsive styles for tabs on mobile */
+      @media screen and (max-width: 767px) {
+        .tabs-menu {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          margin-bottom: 20px;
+        }
+        .course-tab-link {
+          margin-bottom: 8px;
+          text-align: center;
+          font-size: 14px;
+          padding: 8px 12px;
+          width: calc(50% - 8px);
+          box-sizing: border-box;
+        }
+        .courses-collection-wrapper {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+        .courses-card {
+          margin-bottom: 10px;
+        }
+        .h2 {
+          font-size: 28px;
+          text-align: center;
+        }
+      }
+            /* Even smaller screens */
+      @media screen and (max-width: 479px) {
+        .course-tab-link {
+          width: 100%;
+        }
+        .courses-collection-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      /* Enhance tab section styling */
+      .section-title-block {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .section-title-block .h2 {
+        margin-bottom: 15px;
+      }
+      .course-tab-link {
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+      .course-tab-link:hover, 
+      .course-tab-link.w--current {
+        background-color: #FF5722;
+        color: white;
+      }
+      /* Mobile-specific tab styling */
+      @media screen and (max-width: 767px) {
+        .section-title-block {
+          padding: 0 15px;
+        }
+        .colored-text {
+          display: inline-block;
+        }
+      }
+      </style>
   </head>
   <body>
     <div class="page-wrapper">
